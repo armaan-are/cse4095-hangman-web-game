@@ -108,3 +108,27 @@ No Flask, word-file, browser, bot, evaluation, scoring, leaderboard, replay, or 
 ### Scope confirmation
 
 The game engine does not import or know about the word manager. No Flask, browser integration, or out-of-scope client/evaluation feature was added.
+
+## 2026-10-28 — Flask server and three REST endpoints
+
+### Work completed
+
+- Implemented importable Flask application `server:app` with separate in-memory `HangmanGame` instances keyed by `secrets.token_urlsafe` identifiers.
+- Implemented only `POST /api/games`, `GET /api/games/<game_id>`, and `POST /api/games/<game_id>/guess`, plus `/` for the static browser entry point.
+- Added strict JSON-object and exact-field validation with consistent JSON errors: 201 for creation, 200 for successful reads/guesses, 400 for request/game-state validation, and 404 for unknown IDs.
+- Added 17 Flask test-client tests covering all difficulties, unique IDs, malformed/wrong-content-type/missing/extra data, invalid difficulty/letters, unknown IDs, correct/wrong/duplicate guesses, isolated games, win/loss, post-game refusal, and answer secrecy across every active endpoint response.
+
+### Verification performed
+
+- `PYTHONWARNINGS=error::ResourceWarning ... python3 -m unittest tests.test_server -v` — 17 tests passed without warnings.
+- `PYTHONWARNINGS=error::ResourceWarning ... python3 -m unittest discover -s tests -v` — all 44 tests passed without warnings.
+- Python compilation of `server.py` and `tests/test_server.py` — passed.
+- `git diff --check` — passed.
+
+### Issue and resolution
+
+The first passing test run emitted a `ResourceWarning` for the static index response. The test now closes that response explicitly, and the suite passes with resource warnings promoted to errors.
+
+### Scope confirmation
+
+The browser files remain presentation placeholders; no JavaScript gameplay logic, terminal client, bot, evaluation, scoring, leaderboard, or replay route was added.

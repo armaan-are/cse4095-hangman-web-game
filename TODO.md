@@ -52,15 +52,15 @@ Acceptance: every supported difficulty returns only valid words from its own non
 
 ## Phase 4 — Flask server and three REST endpoints
 
-- [ ] Create importable Flask app `server:app` and in-memory game storage keyed by unpredictable IDs.
-- [ ] Implement `POST /api/games`.
-- [ ] Implement `GET /api/games/<game_id>`.
-- [ ] Implement `POST /api/games/<game_id>/guess`.
-- [ ] Return the agreed JSON state shape and status codes.
-- [ ] Validate content type, malformed/missing/unexpected data, difficulty, letters, duplicates, finished games, and unknown IDs.
-- [ ] Serve the browser entry point and static assets without adding browser game logic yet.
-- [ ] Test all difficulties, isolation, validation, status codes, win/loss, and secrecy in every active response.
-- [ ] Run the full suite, record evidence, and commit verified work.
+- [x] Create importable Flask app `server:app` and in-memory game storage keyed by unpredictable IDs.
+- [x] Implement `POST /api/games`.
+- [x] Implement `GET /api/games/<game_id>`.
+- [x] Implement `POST /api/games/<game_id>/guess`.
+- [x] Return the agreed JSON state shape and status codes.
+- [x] Validate content type, malformed/missing/unexpected data, difficulty, letters, duplicates, finished games, and unknown IDs.
+- [x] Serve the browser entry point and static assets without adding browser game logic yet.
+- [x] Test all difficulties, isolation, validation, status codes, win/loss, and secrecy in every active response.
+- [x] Run the full suite, record evidence, and commit verified work.
 
 Acceptance: a game can be played to completion through only the three REST endpoints, simultaneous games remain independent, and the answer appears only after a terminal state.
 
