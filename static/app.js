@@ -1,0 +1,1 @@
+// Browser-to-API integration will be implemented in a later phase.
