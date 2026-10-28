@@ -104,13 +104,13 @@ Acceptance: automated and observed local evidence covers the rubric-critical flo
 
 ## Phase 8 — README and Render readiness
 
-- [ ] Document architecture, setup, play, API examples, tests, and limitations.
-- [ ] Lock only necessary Flask, Gunicorn, and testing dependencies.
-- [ ] Add Render configuration with one worker and `$PORT` binding.
-- [ ] Document that in-memory games reset on restart/sleep.
-- [ ] Scan tracked content for secrets and unintended instructor code.
-- [ ] Perform clean-install and local Gunicorn smoke tests where supported.
-- [ ] Record exact results and commit verified work.
+- [x] Document architecture, setup, play, API examples, tests, and limitations.
+- [x] Lock only necessary Flask, Gunicorn, and testing dependencies.
+- [x] Add Render configuration with one worker and `$PORT` binding.
+- [x] Document that in-memory games reset on restart/sleep.
+- [x] Scan tracked content for secrets and unintended instructor code.
+- [x] Perform clean-install and local Gunicorn smoke tests where supported.
+- [x] Record exact results and commit verified work.
 
 Acceptance: a clean checkout can be installed, tested, and started with the documented commands, and production configuration matches the in-memory architecture.
 

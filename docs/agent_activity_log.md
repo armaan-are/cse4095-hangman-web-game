@@ -206,3 +206,30 @@ The JavaScript is syntax- and structure-verified, but a real browser interaction
 Chrome DevTools Network-panel capture remains a manual requirement because the in-app browser exposes rendered interaction but not Chrome's DevTools UI. Public deployment checks remain pending.
 
 The first clean-environment package install was blocked by restricted network access; the approved scoped retry succeeded. This was an environment constraint, not an application failure.
+
+## 2026-10-28 — README, dependencies, and Render readiness
+
+### Work completed
+
+- Expanded `README.md` with architecture, Python setup, local start, play instructions, all three endpoints and example JSON, test commands, Render settings, source credit, and limitations.
+- Pinned the minimal runtime dependencies to Flask 3.1.2 and Gunicorn 23.0.0. Tests use the Python standard library and need no extra test package.
+- Added `render.yaml` with `pip install -r requirements.txt`, `$PORT` binding, one Gunicorn worker, `server:app`, and `/` health check.
+- Added four static deployment-configuration tests.
+- Scanned project content for common credential/token patterns; no credentials or secrets were found. Reviewed the staged code as original project implementation rather than instructor-transcript code.
+
+### Verification performed
+
+- Clean `pip install -r requirements.txt` completed in the temporary virtual environment after scoped network access was allowed.
+- All 58 tests passed in that environment.
+- Gunicorn 23.0.0 started one sync worker on local port 5056.
+- Gunicorn `GET /` returned HTTP 200 and `POST /api/games` returned HTTP 201 with active-answer secrecy preserved.
+- Gunicorn shut down cleanly.
+- JavaScript syntax and `git diff --check` passed.
+
+### Issue and resolution
+
+The first local Gunicorn command used an inline `PORT=5056` assignment while also expanding `$PORT` in the same shell command, so zsh supplied an empty port. The README now exports `PORT` on a preceding line. The corrected explicit-port smoke test passed. Render's environment sets `PORT` before the start command runs.
+
+### Remaining external work
+
+No GitHub remote, push, Render service, or public HTTPS URL exists yet.

@@ -1,7 +1,7 @@
 # Local Browser Verification
 
-Date: 2026-10-28, approximately 15:44–15:46 EDT  
-Browser: Codex in-app browser  
+Date: 2026-10-28, approximately 15:44–15:46 EDT
+Browser: Codex in-app browser
 URL: `http://127.0.0.1:5055/`
 
 ## Verified observations

@@ -104,3 +104,15 @@ Negative checks:
 - A clean dependency installation for the current Flask test surface passed. Requirements locking and a Gunicorn smoke test belong to the Render-readiness phase.
 - Public HTTPS behavior cannot be tested until a real GitHub repository and Render service exist.
 - The built-in browser does not expose Chrome DevTools Network. The local request/response above is authentic curl/server evidence, but the final demo still needs a manual Chrome DevTools Fetch/XHR capture.
+
+## Clean requirements and Gunicorn — 2026-10-28 15:48 EDT
+
+After `requirements.txt` was finalized, the same temporary clean virtual environment installed exactly `Flask==3.1.2` and `gunicorn==23.0.0`. All 58 tests then passed in 0.024 seconds, and `gunicorn --version` reported 23.0.0.
+
+The first local launch attempted an inline `PORT=5056 ... $PORT` command and failed because zsh expanded `$PORT` before applying that inline assignment. The README example was fixed to export `PORT` on a separate line. Render supplies `PORT` before evaluating its start command, so `render.yaml` remains correct.
+
+The corrected smoke command started one sync worker on `0.0.0.0:5056`. Observed results:
+
+- `GET /` returned HTTP 200 from `Server: gunicorn` and the complete browser HTML.
+- `POST /api/games` with `{"difficulty":"medium"}` returned HTTP 201 with a six-position active pattern and no `word` field.
+- Gunicorn shut down cleanly after the smoke test.
