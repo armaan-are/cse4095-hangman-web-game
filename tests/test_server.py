@@ -165,6 +165,8 @@ class HangmanApiTests(unittest.TestCase):
             f"/api/games/{game_id}/guess", json={"letter": "z"}
         )
         self.assertEqual(400, refused.status_code)
+        retrieved = self.client.get(f"/api/games/{game_id}")
+        self.assertEqual("book", retrieved.get_json()["word"])
 
     def test_loss_reveals_word_only_on_sixth_miss(self):
         game_id = self.create_game(word="apple").get_json()["game_id"]
@@ -194,6 +196,24 @@ class HangmanApiTests(unittest.TestCase):
             self.assertEqual("playing", state["status"])
             self.assertNotIn("word", state)
             self.assertNotIn("eagle", state.values())
+
+    def test_new_game_after_completion_has_fresh_independent_state(self):
+        finished_id = self.create_game(word="a").get_json()["game_id"]
+        finished = self.client.post(
+            f"/api/games/{finished_id}/guess", json={"letter": "a"}
+        ).get_json()
+        self.assertEqual("won", finished["status"])
+
+        fresh = self.create_game(difficulty="hard", word="telescope").get_json()
+        self.assertNotEqual(finished_id, fresh["game_id"])
+        self.assertEqual("playing", fresh["status"])
+        self.assertEqual([], fresh["guessed_letters"])
+        self.assertEqual(6, fresh["remaining_guesses"])
+        self.assertNotIn("word", fresh)
+
+        old_state = self.client.get(f"/api/games/{finished_id}").get_json()
+        self.assertEqual("won", old_state["status"])
+        self.assertEqual("a", old_state["word"])
 
 
 if __name__ == "__main__":

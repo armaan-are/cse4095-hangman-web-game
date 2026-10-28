@@ -94,6 +94,12 @@ class FrontendPresentationTests(unittest.TestCase):
         self.assertIn('addEventListener("keydown"', self.javascript)
         self.assertIn("currentState.status !== \"playing\"", self.javascript)
 
+    def test_javascript_cannot_load_or_derive_hidden_word(self):
+        self.assertNotIn("/words/", self.javascript)
+        self.assertNotIn("word_manager", self.javascript)
+        self.assertNotIn("Math.random", self.javascript)
+        self.assertIn('status !== "playing"', self.javascript)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -178,3 +178,31 @@ This phase performed structural/static verification only. Actual rendered browse
 ### Limitation
 
 The JavaScript is syntax- and structure-verified, but a real browser interaction and network inspection are intentionally reserved for the next dedicated local verification phase.
+
+## 2026-10-28 — Reliability and local browser verification
+
+### Work completed
+
+- Expanded the suite for terminal GET state, fresh game creation after completion, and frontend inability to load or derive word data.
+- Ran 54 automated tests, JavaScript syntax checking, Python compilation, and whitespace checks successfully.
+- Created a temporary clean virtual environment, installed only Flask 3.1.2 and its dependencies, and reran all 54 tests successfully in isolation.
+- Started the real Flask process on localhost after obtaining scoped permission for port binding.
+- Captured real 201, 200, 400, and 404 HTTP responses, including active create/GET/guess responses with no `word` field.
+- Completed an observed browser walkthrough covering all difficulties, button and physical-keyboard guesses, drawing progression, six-miss loss, winning game, terminal input lockout, new game without reload, desktop/mobile breakpoints, and recoverable network failure.
+- Added `docs/testing_evidence.md` and `docs/browser_verification.md` with exact results and limitations.
+
+### Verification summary
+
+- Automated: 54 tests passed.
+- Clean environment: the same 54 tests passed in a new temporary `.venv`.
+- HTTP: real create, GET, guess, invalid difficulty, and unknown-game requests returned the expected statuses and JSON.
+- Browser loss: Hard word `UMBRELLA`, six visible body parts, zero enabled letter buttons after loss.
+- Browser win: Easy word `BREAD`, guesses `e/a/d/b/r`, no incorrect guesses.
+- Responsive: two columns at 1091 px; one game-card column and seven keyboard columns at 354 px.
+- Error recovery: stopped server produced visible `Failed to fetch`; New Game was re-enabled.
+
+### Limitation
+
+Chrome DevTools Network-panel capture remains a manual requirement because the in-app browser exposes rendered interaction but not Chrome's DevTools UI. Public deployment checks remain pending.
+
+The first clean-environment package install was blocked by restricted network access; the approved scoped retry succeeded. This was an environment constraint, not an application failure.

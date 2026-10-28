@@ -91,14 +91,14 @@ Acceptance: a human can complete and restart a game in the browser while all sta
 
 ## Phase 7 — Reliability and local verification
 
-- [ ] Expand deterministic engine, word-manager, API, and secrecy coverage.
-- [ ] Check that active words do not appear in frontend sources.
-- [ ] Run all tests from a clean environment plus syntax/lint checks that are already reasonably available.
-- [ ] Run a temporary local HTTP smoke test.
-- [ ] Perform an actual browser walkthrough for all difficulties, drawing stages, keyboard/buttons, completion, restart, responsive layout, and an error case.
-- [ ] Capture a real guess request/response and active-answer secrecy evidence.
-- [ ] Write `docs/testing_evidence.md` and `docs/browser_verification.md`.
-- [ ] Record exact outcomes and commit verified work.
+- [x] Expand deterministic engine, word-manager, API, and secrecy coverage.
+- [x] Check that active words do not appear in frontend sources.
+- [x] Run all tests from a clean environment plus syntax/lint checks that are already reasonably available.
+- [x] Run a temporary local HTTP smoke test.
+- [x] Perform an actual browser walkthrough for all difficulties, drawing stages, keyboard/buttons, completion, restart, responsive layout, and an error case.
+- [x] Capture a real guess request/response and active-answer secrecy evidence.
+- [x] Write `docs/testing_evidence.md` and `docs/browser_verification.md`.
+- [x] Record exact outcomes and commit verified work.
 
 Acceptance: automated and observed local evidence covers the rubric-critical flows; any manual-only item stays explicitly unchecked.
 
