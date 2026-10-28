@@ -27,14 +27,14 @@ Acceptance: the repository has the agreed structure and guardrails, contains no 
 
 ## Phase 2 — Independent Python game engine
 
-- [ ] Implement `HangmanGame` in `game.py`, independent of Flask, files, and UI.
-- [ ] Track a private answer, guessed letters, incorrect letters, and six allowed incorrect guesses.
-- [ ] Validate exactly one A–Z letter, normalize case, and reject duplicates consistently.
-- [ ] Generate the spaced masked pattern and playing/won/lost states.
-- [ ] Lock guessing after completion.
-- [ ] Serialize client-safe state and reveal `word` only after win or loss.
-- [ ] Test initial state, repeated letters, validation, duplicates, correct/wrong guesses, win/loss boundaries, lockout, and active-answer secrecy.
-- [ ] Run the focused test suite, log the exact result, and commit verified work.
+- [x] Implement `HangmanGame` in `game.py`, independent of Flask, files, and UI.
+- [x] Track a private answer, guessed letters, incorrect letters, and six allowed incorrect guesses.
+- [x] Validate exactly one A–Z letter, normalize case, and reject duplicates consistently.
+- [x] Generate the spaced masked pattern and playing/won/lost states.
+- [x] Lock guessing after completion.
+- [x] Serialize client-safe state and reveal `word` only after win or loss.
+- [x] Test initial state, repeated letters, validation, duplicates, correct/wrong guesses, win/loss boundaries, lockout, and active-answer secrecy.
+- [x] Run the focused test suite, log the exact result, and commit verified work.
 
 Acceptance: the complete game can be exercised deterministically through Python tests without Flask, word files, or a browser, and every active serialized state omits the answer.
 

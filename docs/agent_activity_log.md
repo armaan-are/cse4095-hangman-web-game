@@ -65,3 +65,27 @@ Create the minimal project skeleton and repository rules only. Do not implement 
 - No Flask dependency has been added or installed because Flask implementation is a later phase.
 - Initialized a separate local Git repository on branch `main`.
 - Created the verified root commit `22f0755` (`chore: initialize Hangman project skeleton`) after the structural, syntax, source-integrity, and secret checks.
+
+## 2026-10-28 — Independent game engine
+
+### Work completed
+
+- Implemented an independent `HangmanGame` with a private normalized answer, ordered guessed/incorrect letters, a configurable six-miss default, spaced patterns, remaining lives, and `playing`/`won`/`lost` states.
+- Added consistent ASCII A–Z validation, lowercase normalization, duplicate rejection, and post-game lockout using explicit exceptions.
+- Added client-safe serialization that returns copies of mutable lists and includes `word` only after win or loss.
+- Added 18 deterministic unit tests for initialization, repeated letters, normalization, invalid words/limits/guesses, duplicates, life accounting, win/loss boundaries, lockout, defensive copies, and active-answer secrecy.
+
+### Verification performed
+
+- `PYTHONPYCACHEPREFIX=/private/tmp/hangman-web-game-pycache python3 -m unittest tests.test_game -v` — 18 tests passed.
+- `PYTHONPYCACHEPREFIX=/private/tmp/hangman-web-game-pycache python3 -m unittest discover -s tests -v` — 18 tests passed.
+- `PYTHONPYCACHEPREFIX=/private/tmp/hangman-web-game-pycache python3 -m py_compile game.py tests/test_game.py` — passed.
+- `git diff --check` — passed.
+
+### Issue and resolution
+
+The first named-module test command failed with `ModuleNotFoundError: No module named 'tests.test_game'` even though discovery ran all 18 tests successfully. Adding `tests/__init__.py` made the focused module import explicit; both focused and discovery commands then passed.
+
+### Scope confirmation
+
+No Flask, word-file, browser, bot, evaluation, scoring, leaderboard, replay, or deployment behavior was added in this phase.
