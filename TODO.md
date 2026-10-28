@@ -40,13 +40,13 @@ Acceptance: the complete game can be exercised deterministically through Python 
 
 ## Phase 3 — Difficulty-based word management
 
-- [ ] Implement `word_manager.py` without coupling it to the game engine.
-- [ ] Add original `words/easy.txt`, `words/medium.txt`, and `words/hard.txt` lists with at least 40 valid words each if no student-owned originals exist.
-- [ ] Normalize case, ignore blanks, reject nonalphabetic entries, and deduplicate.
-- [ ] Validate difficulty and select only from its corresponding list.
-- [ ] Resolve paths independently of the process working directory.
-- [ ] Test temporary fixtures, failures, selection, and all real lists.
-- [ ] Run the full suite, record evidence, and commit verified work.
+- [x] Implement `word_manager.py` without coupling it to the game engine.
+- [x] Add original `words/easy.txt`, `words/medium.txt`, and `words/hard.txt` lists with at least 40 valid words each if no student-owned originals exist.
+- [x] Normalize case, ignore blanks, reject nonalphabetic entries, and deduplicate.
+- [x] Validate difficulty and select only from its corresponding list.
+- [x] Resolve paths independently of the process working directory.
+- [x] Test temporary fixtures, failures, selection, and all real lists.
+- [x] Run the full suite, record evidence, and commit verified work.
 
 Acceptance: every supported difficulty returns only valid words from its own nonempty list, invalid/missing data fails clearly, and all engine and word-manager tests pass.
 

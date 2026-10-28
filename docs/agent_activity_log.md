@@ -89,3 +89,22 @@ The first named-module test command failed with `ModuleNotFoundError: No module 
 ### Scope confirmation
 
 No Flask, word-file, browser, bot, evaluation, scoring, leaderboard, replay, or deployment behavior was added in this phase.
+
+## 2026-10-28 — Difficulty-based word management
+
+### Work completed
+
+- Implemented `WordManager` with module-relative default paths, explicit easy/medium/hard validation, UTF-8 loading, lowercase normalization, blank-line skipping, order-preserving deduplication, and clear missing/empty/invalid-list errors.
+- Added original curated lists: 50 easy words, 50 medium words, and 51 hard words. Every word is ASCII alphabetic, unique within its list, and within the documented difficulty length range.
+- Added nine word-manager tests using temporary fixtures plus validation of all three real lists and working-directory independence.
+
+### Verification performed
+
+- `PYTHONPYCACHEPREFIX=/private/tmp/hangman-web-game-pycache python3 -m unittest tests.test_word_manager -v` — 9 tests passed.
+- `PYTHONPYCACHEPREFIX=/private/tmp/hangman-web-game-pycache python3 -m unittest discover -s tests -v` — all 27 tests passed.
+- Python compilation of the engine, word manager, and their tests — passed.
+- `git diff --check` — passed.
+
+### Scope confirmation
+
+The game engine does not import or know about the word manager. No Flask, browser integration, or out-of-scope client/evaluation feature was added.
