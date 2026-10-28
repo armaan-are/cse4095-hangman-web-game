@@ -66,12 +66,12 @@ Acceptance: a game can be played to completion through only the three REST endpo
 
 ## Phase 5 — Responsive HTML/CSS presentation
 
-- [ ] Build original semantic HTML and responsive CSS.
-- [ ] Add difficulty, New Game, masked word, remaining guesses, guessed letters, A–Z controls, status/error regions, and win/loss presentation.
-- [ ] Add an SVG scaffold and six separately revealable figure parts.
-- [ ] Add keyboard/focus accessibility and mobile layout.
-- [ ] Keep gameplay and active answers out of the frontend.
-- [ ] Perform available static/render checks, log limitations, and commit verified work.
+- [x] Build original semantic HTML and responsive CSS.
+- [x] Add difficulty, New Game, masked word, remaining guesses, guessed letters, A–Z controls, status/error regions, and win/loss presentation.
+- [x] Add an SVG scaffold and six separately revealable figure parts.
+- [x] Add keyboard/focus accessibility and mobile layout.
+- [x] Keep gameplay and active answers out of the frontend.
+- [x] Perform available static/render checks, log limitations, and commit verified work.
 
 Acceptance: the static page presents all required states accessibly on common widths, contains exactly six drawable body stages, and does not implement or embed game answers.
 

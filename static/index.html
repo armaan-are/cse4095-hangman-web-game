@@ -3,14 +3,139 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hangman — Implementation Pending</title>
+    <meta name="description" content="A server-authoritative web Hangman game with three difficulty levels.">
+    <title>Hangman Workshop</title>
     <link rel="stylesheet" href="/static/style.css">
   </head>
-  <body>
-    <main>
-      <h1>Hangman</h1>
-      <p>The browser interface will be implemented in a later phase.</p>
+  <body data-game-state="not-started">
+    <div class="page-glow" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Hangman Workshop home">
+        <span class="brand-mark" aria-hidden="true">H</span>
+        <span>Hangman Workshop</span>
+      </a>
+      <p class="header-note">Six misses. One mystery word.</p>
+    </header>
+
+    <main class="game-layout">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">A small game of careful choices</p>
+        <h1 id="page-title">Find the word<br><span>before time runs out.</span></h1>
+        <p class="intro-copy">Choose a level, start a round, and uncover the word one letter at a time.</p>
+      </section>
+
+      <section class="game-card" aria-label="Hangman game">
+        <div class="drawing-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-label">The drawing board</p>
+              <p id="attempts-text" class="attempts-text">6 attempts remaining</p>
+            </div>
+            <span id="game-status-badge" class="status-badge">Ready</span>
+          </div>
+
+          <svg class="hangman-drawing" viewBox="0 0 360 310" role="img" aria-labelledby="drawing-title drawing-description">
+            <title id="drawing-title">Hangman drawing</title>
+            <desc id="drawing-description">An empty scaffold. Each incorrect guess adds one of six body parts.</desc>
+            <g class="scaffold" aria-hidden="true">
+              <path d="M55 280H300"></path>
+              <path d="M100 280V36H250"></path>
+              <path d="M100 78L142 36"></path>
+              <path d="M250 36V72"></path>
+            </g>
+            <g class="figure" aria-hidden="true">
+              <circle class="figure-part" data-part="1" cx="250" cy="102" r="30"></circle>
+              <path class="figure-part" data-part="2" d="M250 132V205"></path>
+              <path class="figure-part" data-part="3" d="M250 153L210 181"></path>
+              <path class="figure-part" data-part="4" d="M250 153L290 181"></path>
+              <path class="figure-part" data-part="5" d="M250 205L216 250"></path>
+              <path class="figure-part" data-part="6" d="M250 205L284 250"></path>
+            </g>
+          </svg>
+
+          <div class="progress-track" aria-hidden="true">
+            <span id="progress-fill"></span>
+          </div>
+          <p class="progress-caption"><span id="incorrect-count">0</span> of 6 incorrect guesses</p>
+        </div>
+
+        <div class="play-panel">
+          <div class="game-toolbar">
+            <label for="difficulty">Difficulty</label>
+            <div class="toolbar-controls">
+              <select id="difficulty" name="difficulty">
+                <option value="easy">Easy · 4–7 letters</option>
+                <option value="medium" selected>Medium · 5–9 letters</option>
+                <option value="hard">Hard · 8–12 letters</option>
+              </select>
+              <button id="new-game" class="primary-button" type="button">New game</button>
+            </div>
+          </div>
+
+          <div id="game-message" class="game-message" role="status" aria-live="polite" aria-atomic="true">
+            <span class="message-icon" aria-hidden="true">✦</span>
+            <span id="message-text">Choose a difficulty and start a new game.</span>
+          </div>
+          <p id="error-message" class="error-message" role="alert" hidden></p>
+
+          <section class="word-area" aria-labelledby="word-label">
+            <p id="word-label" class="section-label">Mystery word</p>
+            <p id="word-pattern" class="word-pattern" aria-live="polite" aria-label="No active word">—</p>
+            <p id="final-word" class="final-word" hidden></p>
+          </section>
+
+          <div class="guess-summary">
+            <section aria-labelledby="guessed-label">
+              <p id="guessed-label" class="section-label">Letters tried</p>
+              <p id="guessed-letters" class="letter-history">None yet</p>
+            </section>
+            <section aria-labelledby="incorrect-label">
+              <p id="incorrect-label" class="section-label">Incorrect</p>
+              <p id="incorrect-letters" class="letter-history letter-history-wrong">None yet</p>
+            </section>
+          </div>
+
+          <section class="keyboard-section" aria-labelledby="keyboard-label">
+            <div class="keyboard-heading">
+              <p id="keyboard-label" class="section-label">Choose a letter</p>
+              <p>or use your keyboard</p>
+            </div>
+            <div id="keyboard" class="keyboard" role="group" aria-labelledby="keyboard-label">
+              <button type="button" data-letter="a" aria-label="Guess A" disabled>A</button>
+              <button type="button" data-letter="b" aria-label="Guess B" disabled>B</button>
+              <button type="button" data-letter="c" aria-label="Guess C" disabled>C</button>
+              <button type="button" data-letter="d" aria-label="Guess D" disabled>D</button>
+              <button type="button" data-letter="e" aria-label="Guess E" disabled>E</button>
+              <button type="button" data-letter="f" aria-label="Guess F" disabled>F</button>
+              <button type="button" data-letter="g" aria-label="Guess G" disabled>G</button>
+              <button type="button" data-letter="h" aria-label="Guess H" disabled>H</button>
+              <button type="button" data-letter="i" aria-label="Guess I" disabled>I</button>
+              <button type="button" data-letter="j" aria-label="Guess J" disabled>J</button>
+              <button type="button" data-letter="k" aria-label="Guess K" disabled>K</button>
+              <button type="button" data-letter="l" aria-label="Guess L" disabled>L</button>
+              <button type="button" data-letter="m" aria-label="Guess M" disabled>M</button>
+              <button type="button" data-letter="n" aria-label="Guess N" disabled>N</button>
+              <button type="button" data-letter="o" aria-label="Guess O" disabled>O</button>
+              <button type="button" data-letter="p" aria-label="Guess P" disabled>P</button>
+              <button type="button" data-letter="q" aria-label="Guess Q" disabled>Q</button>
+              <button type="button" data-letter="r" aria-label="Guess R" disabled>R</button>
+              <button type="button" data-letter="s" aria-label="Guess S" disabled>S</button>
+              <button type="button" data-letter="t" aria-label="Guess T" disabled>T</button>
+              <button type="button" data-letter="u" aria-label="Guess U" disabled>U</button>
+              <button type="button" data-letter="v" aria-label="Guess V" disabled>V</button>
+              <button type="button" data-letter="w" aria-label="Guess W" disabled>W</button>
+              <button type="button" data-letter="x" aria-label="Guess X" disabled>X</button>
+              <button type="button" data-letter="y" aria-label="Guess Y" disabled>Y</button>
+              <button type="button" data-letter="z" aria-label="Guess Z" disabled>Z</button>
+            </div>
+          </section>
+        </div>
+      </section>
     </main>
+
+    <footer>
+      <p>Server-authoritative gameplay · The active word stays private.</p>
+    </footer>
     <script src="/static/app.js" defer></script>
   </body>
 </html>

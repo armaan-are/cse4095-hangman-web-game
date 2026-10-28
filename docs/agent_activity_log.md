@@ -132,3 +132,27 @@ The first passing test run emitted a `ResourceWarning` for the static index resp
 ### Scope confirmation
 
 The browser files remain presentation placeholders; no JavaScript gameplay logic, terminal client, bot, evaluation, scoring, leaderboard, or replay route was added.
+
+## 2026-10-28 — Responsive HTML/CSS presentation
+
+### Work completed
+
+- Replaced the placeholder with an original responsive “Hangman Workshop” interface using semantic controls, labelled sections, polite/alert live regions, visible focus states, and reduced-motion support.
+- Added difficulty selection, New Game, mystery pattern, attempts, guessed/incorrect summaries, terminal word area, and a complete disabled A–Z button grid for later JavaScript wiring.
+- Added an accessible SVG scaffold with exactly six separately revealable figure parts and progress presentation.
+- Added desktop, tablet, and mobile layouts without external assets or embedded game answers.
+- Added five static presentation tests for required hooks, the complete alphabet, six ordered body parts, live regions, responsive/focus CSS, and absence of sample answer text in visible markup.
+
+### Verification performed
+
+- `python3 -m unittest tests.test_frontend_static -v` — 5 tests passed.
+- Full discovery suite — all 49 tests passed.
+- `git diff --check` — passed.
+
+### Issue and resolution
+
+The first answer-text assertion falsely matched `apple` inside CSS's standard `-apple-system` font family. The test was corrected to inspect visible HTML text rather than CSS vendor identifiers; the focused and full suites then passed.
+
+### Limitation
+
+This phase performed structural/static verification only. Actual rendered browser behavior and responsive visual observation remain for the dedicated local browser phase after JavaScript integration.
