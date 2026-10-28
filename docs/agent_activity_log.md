@@ -63,4 +63,5 @@ Create the minimal project skeleton and repository rules only. Do not implement 
 - There is no application functionality yet; the visible HTML is an implementation-pending placeholder.
 - No GitHub remote or push exists. Manual setup remains pending in `docs/github_setup.md`.
 - No Flask dependency has been added or installed because Flask implementation is a later phase.
-- Local Git initialization and the verified checkpoint commit are the remaining actions in this phase.
+- Initialized a separate local Git repository on branch `main`.
+- Created the verified root commit `22f0755` (`chore: initialize Hangman project skeleton`) after the structural, syntax, source-integrity, and secret checks.

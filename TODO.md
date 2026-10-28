@@ -21,7 +21,7 @@ This is the student's fresh implementation plan. All implementation tasks begin 
 - [x] Confirm the source references and planning documents are present.
 - [x] Inspect Git state and initialize the project repository if needed.
 - [x] Record actual checks and blockers in `docs/agent_activity_log.md`.
-- [ ] Create a local commit only after the phase checks pass.
+- [x] Create a local commit only after the phase checks pass.
 
 Acceptance: the repository has the agreed structure and guardrails, contains no implemented game/API/UI logic, documents a reproducible `.venv` setup, and has an honest local Git checkpoint. GitHub creation remains pending unless authenticated creation is genuinely available and verified.
 
