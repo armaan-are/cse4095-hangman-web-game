@@ -116,7 +116,7 @@ Acceptance: a clean checkout can be installed, tested, and started with the docu
 
 ## Phase 9 — GitHub publication and Render deployment
 
-- [ ] Audit the final tracked files, history, branch, and secret scan.
+- [x] Audit the final tracked files, history, branch, and secret scan.
 - [ ] Create/use the student's own GitHub repository and verify the real remote.
 - [ ] Push the checked branch and verify the remote commit and accessible URL.
 - [ ] Create a Render Python Web Service only with explicit approval for any consequential UI choice.
@@ -129,14 +129,14 @@ Acceptance: the student's repository and Render service are independently reacha
 
 ## Phase 10 — Report, demo, and final audit
 
-- [ ] Create an editable first-person report source using only verified project evidence.
-- [ ] Quote 2–3 representative prompts actually used.
-- [ ] Generate and visually verify a legible 1–2 page PDF.
-- [ ] Create a truthful, timed 2–3 minute demo script.
-- [ ] Record/review the real public demo only with explicit approval, or clearly leave recording as a student action.
-- [ ] Create `submission/SUBMISSION_CHECKLIST.md` with VERIFIED, MISSING, and NEEDS MY ACTION states.
+- [x] Create an editable first-person report source using only verified project evidence.
+- [x] Quote 2–3 representative prompts actually used.
+- [x] Generate and visually verify a legible 1–2 page PDF.
+- [x] Create a truthful, timed 2–3 minute demo script.
+- [x] Record/review the real public demo only with explicit approval, or clearly leave recording as a student action.
+- [x] Create `submission/SUBMISSION_CHECKLIST.md` with VERIFIED, MISSING, and NEEDS MY ACTION states.
 - [ ] Recheck URLs, source completeness, tests, PDF pages, video playback, and secrets.
-- [ ] Identify the exact HuskyCT text and two upload files without submitting them.
+- [x] Identify the exact HuskyCT text and two upload files without submitting them.
 
 Acceptance: every rubric item is backed by real evidence, incomplete student actions remain visible, and nothing has been submitted or purchased without explicit approval.
 

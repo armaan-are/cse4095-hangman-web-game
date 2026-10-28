@@ -233,3 +233,19 @@ The first local Gunicorn command used an inline `PORT=5056` assignment while als
 ### Remaining external work
 
 No GitHub remote, push, Render service, or public HTTPS URL exists yet.
+
+## 2026-10-28 — Report draft, demo script, and final readiness audit
+
+### Work completed
+
+- Created editable first-person report source with verified architecture, 58-test result, local Gunicorn/browser evidence, real problems and fixes, reflection, and three actual prompts from the supplied queue.
+- Generated `submission/hangman_development_report.pdf` with ReportLab.
+- Verified PDF metadata: two letter-sized pages, no encryption, no embedded JavaScript.
+- Rendered both pages to PNG and visually inspected them. Text is legible; headings, bullets, quote panels, margins, page numbers, and footer are aligned with no clipping or overlap.
+- Created a timed public-demo script with Chrome DevTools Payload/Response instructions and manual macOS recording steps.
+- Created the final checklist with separate VERIFIED, MISSING, and NEEDS MY ACTION sections plus exact HuskyCT text and two-file upload guidance.
+- Added `docs/deployment_evidence.md` documenting the GitHub sign-in blocker and absence of a Render service.
+
+### Honest status
+
+The report is a verified two-page draft, not the final submission version. It explicitly states that GitHub/Render URLs are missing and must be regenerated after publication. No recording exists. No HuskyCT submission occurred.
