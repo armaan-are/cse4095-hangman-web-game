@@ -77,15 +77,15 @@ Acceptance: the static page presents all required states accessibly on common wi
 
 ## Phase 6 — Browser JavaScript integration
 
-- [ ] Use relative same-origin `fetch()` calls to the three REST endpoints.
-- [ ] Render only server-returned game state.
-- [ ] Support button and physical A–Z keyboard guesses.
-- [ ] Disable duplicates and all guesses after completion.
-- [ ] Prevent double submissions and stale responses.
-- [ ] Handle network/server errors and restore usable controls.
-- [ ] Start a different difficulty/new game without reloading.
-- [ ] Use safe text assignment for response data.
-- [ ] Run the full suite and any supported frontend smoke checks, log evidence, and commit.
+- [x] Use relative same-origin `fetch()` calls to the three REST endpoints.
+- [x] Render only server-returned game state.
+- [x] Support button and physical A–Z keyboard guesses.
+- [x] Disable duplicates and all guesses after completion.
+- [x] Prevent double submissions and stale responses.
+- [x] Handle network/server errors and restore usable controls.
+- [x] Start a different difficulty/new game without reloading.
+- [x] Use safe text assignment for response data.
+- [x] Run the full suite and any supported frontend smoke checks, log evidence, and commit.
 
 Acceptance: a human can complete and restart a game in the browser while all state decisions remain server-authoritative and stale or failed requests do not corrupt the UI.
 

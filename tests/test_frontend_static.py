@@ -41,6 +41,7 @@ class FrontendPresentationTests(unittest.TestCase):
     def setUpClass(cls):
         cls.html = (STATIC_DIRECTORY / "index.html").read_text(encoding="utf-8")
         cls.css = (STATIC_DIRECTORY / "style.css").read_text(encoding="utf-8")
+        cls.javascript = (STATIC_DIRECTORY / "app.js").read_text(encoding="utf-8")
         cls.parser = StructureParser()
         cls.parser.feed(cls.html)
 
@@ -76,6 +77,22 @@ class FrontendPresentationTests(unittest.TestCase):
         visible_text = " ".join(self.parser.text).lower().split()
         for word in ("apple", "eagle", "telescope"):
             self.assertNotIn(word, visible_text)
+
+    def test_javascript_uses_required_relative_api_calls(self):
+        self.assertIn('requestJson("/api/games"', self.javascript)
+        self.assertIn("/api/games/${gameId}/guess", self.javascript)
+        self.assertIn("fetch(url", self.javascript)
+
+    def test_javascript_uses_safe_text_rendering(self):
+        self.assertIn("textContent", self.javascript)
+        self.assertNotIn("innerHTML", self.javascript)
+        self.assertNotIn("document.write", self.javascript)
+
+    def test_javascript_guards_requests_and_keyboard_input(self):
+        self.assertIn("requestVersion", self.javascript)
+        self.assertIn("requestPending", self.javascript)
+        self.assertIn('addEventListener("keydown"', self.javascript)
+        self.assertIn("currentState.status !== \"playing\"", self.javascript)
 
 
 if __name__ == "__main__":

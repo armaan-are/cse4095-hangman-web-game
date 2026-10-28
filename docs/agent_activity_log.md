@@ -156,3 +156,25 @@ The first answer-text assertion falsely matched `apple` inside CSS's standard `-
 ### Limitation
 
 This phase performed structural/static verification only. Actual rendered browser behavior and responsive visual observation remain for the dedicated local browser phase after JavaScript integration.
+
+## 2026-10-28 — Browser JavaScript integration
+
+### Work completed
+
+- Implemented same-origin `fetch()` integration for new games and guesses using only server-returned state.
+- Added on-screen and physical A–Z keyboard input, guessed-letter disabling, six-part drawing updates, remaining-attempt progress, win/loss messaging, and terminal answer display only when the server supplies `word`.
+- Added a request lock and monotonic request version so double submissions and stale asynchronous responses cannot overwrite the current game.
+- Added network/server error recovery that restores controls after failures.
+- Used `textContent` for response data and avoided `innerHTML` or client-side answer derivation.
+- Expanded static checks to cover relative API calls, safe rendering, request guards, terminal-state guards, and keyboard integration.
+
+### Verification performed
+
+- `node --check static/app.js` — passed.
+- `python3 -m unittest tests.test_frontend_static -v` — 8 tests passed.
+- Full discovery suite — all 52 tests passed.
+- `git diff --check` — passed.
+
+### Limitation
+
+The JavaScript is syntax- and structure-verified, but a real browser interaction and network inspection are intentionally reserved for the next dedicated local verification phase.
