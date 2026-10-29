@@ -121,6 +121,10 @@ Verified commands, real local API responses, and browser observations are record
 
 ## Production and Render
 
+Verified public deployment: https://cse4095-hangman-web-game.onrender.com
+
+Source repository: https://github.com/armaan-are/cse4095-hangman-web-game
+
 `render.yaml` defines a Python Web Service with:
 
 - build command: `pip install -r requirements.txt`

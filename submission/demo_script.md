@@ -5,7 +5,7 @@ This script must be recorded against the real public Render HTTPS URL after depl
 ## Preflight
 
 - Close unrelated tabs and notifications; do not show passwords, tokens, email, grades, or personal files.
-- Open the verified Render URL: `[PUBLIC_RENDER_URL]`.
+- Open the verified Render URL: `https://cse4095-hangman-web-game.onrender.com`.
 - Open Chrome DevTools before starting the game: **View -> Developer -> Developer Tools -> Network -> Fetch/XHR**.
 - Enable **Preserve log** if desired, clear old requests, and keep DevTools narrow enough that the game remains readable.
 - Confirm the microphone input and do a short audio test.
@@ -60,4 +60,4 @@ DevTools only records traffic after it opens. Keep DevTools open, clear the Netw
 6. Review the entire video for readable text, audible narration, privacy, real public URL, game end/restart, and the actual Network request/response.
 7. Save the final 2–3 minute file under `submission/` and record its exact filename in `SUBMISSION_CHECKLIST.md`.
 
-No recording has been made yet because screen recording requires the student's explicit approval and a real public deployment.
+No recording has been made yet because screen recording remains the student's explicit action. The public deployment is live and ready for the demonstration.

@@ -117,13 +117,13 @@ Acceptance: a clean checkout can be installed, tested, and started with the docu
 ## Phase 9 — GitHub publication and Render deployment
 
 - [x] Audit the final tracked files, history, branch, and secret scan.
-- [ ] Create/use the student's own GitHub repository and verify the real remote.
-- [ ] Push the checked branch and verify the remote commit and accessible URL.
-- [ ] Create a Render Python Web Service only with explicit approval for any consequential UI choice.
-- [ ] Verify build/start settings and inspect real deployment logs.
-- [ ] Record the real public HTTPS URL only after it responds.
-- [ ] Test the deployed UI and all three endpoints, including bad input and secrecy.
-- [ ] Write `docs/deployment_evidence.md` with dated, real evidence.
+- [x] Create/use the student's own GitHub repository and verify the real remote.
+- [x] Push the checked branch and verify the remote commit and accessible URL.
+- [x] Create a Render Python Web Service only with explicit approval for any consequential UI choice.
+- [x] Verify build/start settings and inspect real deployment logs.
+- [x] Record the real public HTTPS URL only after it responds.
+- [x] Test the deployed UI and all three endpoints, including bad input and secrecy.
+- [x] Write `docs/deployment_evidence.md` with dated, real evidence.
 
 Acceptance: the student's repository and Render service are independently reachable, synchronized to the verified commit, and pass a public end-to-end playthrough and API checks.
 
@@ -142,20 +142,20 @@ Acceptance: every rubric item is backed by real evidence, incomplete student act
 
 ## Manual actions that may require the student
 
-- [ ] Authorize or create the student's own GitHub repository if local authentication cannot do so safely.
-- [ ] Authorize GitHub access in Render and choose the intended repository.
-- [ ] Approve the Render service configuration; do not choose a paid plan or add payment details.
-- [ ] Interact with login, CAPTCHA, MFA, or consent screens when required.
+- [x] Authorize or create the student's own GitHub repository if local authentication cannot do so safely.
+- [x] Authorize GitHub access in Render and choose the intended repository.
+- [x] Approve the Render service configuration; do not choose a paid plan or add payment details.
+- [x] Interact with login, CAPTCHA, MFA, or consent screens when required.
 - [ ] Record and review the real 2–3 minute screen demonstration.
 - [ ] Upload the report PDF and video and paste the verified URLs into HuskyCT.
 - [ ] Submit through HuskyCT before the deadline.
 
 ## Final submission checklist
 
-- [ ] Own GitHub repository URL is accessible to the grader.
-- [ ] Own Render HTTPS application URL is live.
-- [ ] 1–2 page PDF report contains 2–3 real prompts.
+- [x] Own GitHub repository URL is accessible to the grader.
+- [x] Own Render HTTPS application URL is live.
+- [x] 1–2 page PDF report contains 2–3 real prompts.
 - [ ] Approximately 2–3 minute recording shows game start, guesses, end, restart, and a real API request/JSON response.
-- [ ] GitHub includes the original specification, revised TODO, README, source, tests, word files, and deployment configuration.
-- [ ] Public service is intended to remain available during grading.
+- [x] GitHub includes the original specification, revised TODO, README, source, tests, word files, and deployment configuration.
+- [x] Public service is intended to remain available during grading.
 - [ ] HuskyCT submission is completed before October 29, 2026 at 11:59 PM Eastern.

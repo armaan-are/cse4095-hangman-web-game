@@ -1,8 +1,8 @@
-# Pending GitHub Repository Setup
+# GitHub Repository Setup
 
-GitHub remote creation is pending because the GitHub CLI (`gh`) is not installed in the current environment. No remote repository has been created or pushed.
+Completed on October 29, 2026. The public repository is https://github.com/armaan-are/cse4095-hangman-web-game, `origin` uses its HTTPS URL, and `main` was independently verified at commit `57ed38e1d0e0606442c5e8e04e60863a654eccb7`.
 
-When the project is ready for an authenticated GitHub action:
+The authenticated setup used these steps:
 
 1. Sign in to [GitHub](https://github.com/) in the student's browser.
 2. Select the **+** menu in the upper-right corner and choose **New repository**.

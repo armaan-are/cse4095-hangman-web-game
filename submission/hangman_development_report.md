@@ -1,6 +1,6 @@
 # Building a Web-Based Hangman Game with Codex
 
-**CSE 4095 Individual Assignment | Development Report | October 28, 2026**
+**CSE 4095 Individual Assignment | Development Report | October 29, 2026**
 
 ## Project overview
 
@@ -22,6 +22,7 @@ For each later phase, Codex inspected the real repository state, implemented onl
 - The interface supports mouse and physical-keyboard guesses, six SVG drawing stages, stale-request protection, safe `textContent` rendering, win/loss feedback, restart without reload, and mobile/desktop layouts.
 - A clean virtual environment passed **58 automated tests**. Node syntax checking and Python compilation passed. A real Gunicorn 23.0.0 process returned HTTP 200 for the page and HTTP 201 for game creation.
 - A real local browser walkthrough covered all three levels, click and keyboard input, a six-part loss, a complete win, restart, responsive breakpoints, active-answer secrecy, and network-error recovery.
+- The public Render service repeated the critical checks: browser start/guess behavior, 201/200/400/404 endpoint responses, no active `word` field, and terminal answer disclosure only after a real loss.
 
 \pagebreak
 
@@ -43,6 +44,6 @@ These prompts helped keep each change reviewable and prevented later features fr
 
 ## Deployment status and reflection
 
-The local repository is complete through Render readiness at commit `0eb79ce`. It includes pinned Flask and Gunicorn dependencies plus a single-worker `render.yaml`. **GitHub publication and Render deployment are not yet verified because the available browser reached GitHub's sign-in page. No repository URL or public HTTPS URL exists yet, so I have not invented either one.** The final report must be regenerated after authenticated publication and public end-to-end verification.
+The public source repository is **https://github.com/armaan-are/cse4095-hangman-web-game** and the live application is **https://cse4095-hangman-web-game.onrender.com**. Render deployed verified commit `57ed38e` on its Free plan using `pip install -r requirements.txt` and one Gunicorn worker. The build succeeded, the health request returned 200, and the service became live. Public checks created, retrieved, guessed, validated bad input, handled an unknown ID, and finished a game; the answer remained private while playing and appeared only after the terminal loss.
 
 AI assistance made it faster to turn a broad specification into small testable phases, but it did not remove the need for judgment. The most valuable practice was requiring direct evidence: a test count, an HTTP response, an observed browser state, or a real commit. The agent also made mistakes, including a brittle test and an incorrect shell example. Running the software exposed those issues. My main lesson is that AI-generated code becomes trustworthy only after I inspect the design boundaries, reproduce the checks, and keep unverified external work visibly incomplete.

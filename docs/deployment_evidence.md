@@ -1,26 +1,37 @@
 # Deployment Evidence
 
-## Current status — 2026-10-28
+## Current status — 2026-10-29
 
-**MISSING: no GitHub remote repository and no Render service exist yet.**
+**VERIFIED: GitHub publication and the free Render deployment are live.**
 
-Local deployment readiness is verified:
+- GitHub repository: https://github.com/armaan-are/cse4095-hangman-web-game
+- Render application: https://cse4095-hangman-web-game.onrender.com
+- deployed branch: `main`
+- deployed source commit: `57ed38e1d0e0606442c5e8e04e60863a654eccb7`
+- Render service ID: `srv-dbhmp4psrm7s73888k8g`
+- compute: Free, $0/month, 0.1 CPU, 512 MB RAM
+- build: `pip install -r requirements.txt`
+- start: `gunicorn --bind 0.0.0.0:$PORT --workers 1 server:app`
 
-- branch: `main`
-- Render-readiness commit: `0eb79ce`
-- clean dependency install: Flask 3.1.2 and Gunicorn 23.0.0
-- automated suite: 58 tests passed
-- local production smoke: one Gunicorn sync worker served `GET /` with HTTP 200 and `POST /api/games` with HTTP 201
-- configuration: `render.yaml` binds `0.0.0.0:$PORT`, uses one worker, and launches `server:app`
+## GitHub publication
 
-## GitHub attempt
+The repository was created under the student's `armaan-are` account as a public repository. The local `main` branch was pushed to `origin`, and `git ls-remote --heads origin main` returned the same full SHA as local `HEAD`: `57ed38e1d0e0606442c5e8e04e60863a654eccb7`.
 
-The GitHub CLI is not installed. The controlled browser opened `https://github.com/new` and was redirected to GitHub's sign-in page. No username, password, passkey, OAuth approval, MFA value, or other credential was entered. No repository was created, no remote was added, and no push was claimed.
+## Render build and launch
 
-Required student action: sign in to GitHub in the visible browser. After sign-in, create the student's own repository, add the verified URL as `origin`, push `main`, and independently verify the remote commit.
+Render cloned the verified repository, checked out commit `57ed38e`, installed Flask 3.1.2 and Gunicorn 23.0.0, and reported `Build successful`. The runtime log showed the exact one-worker start command, Gunicorn listening on port 10000, a successful health request, `Your service is live`, and the primary HTTPS URL. The first deploy completed in 49.8 seconds at 11:56 AM EDT. No paid plan or payment method was selected.
 
-## Render status
+## Public browser and API verification
 
-Render deployment was not attempted because the required GitHub repository does not yet exist. No plan was selected, no payment method was added, and no public URL was invented.
+The public page loaded over HTTPS with the responsive Hangman interface. A Medium game started without reloading, displayed a seven-letter masked pattern, accepted an `A` guess, reduced the remaining attempts from six to five when the guess was wrong, updated the SVG drawing, listed `A` as tried/incorrect, and disabled the duplicate `A` control.
 
-After GitHub publication, create a Python Web Service using the repository and the values in `render.yaml`. Choose a free plan only if Render currently offers it. The real build log, service settings, public HTTPS URL, and public API/browser checks must be appended here before deployment can be called complete.
+Independent HTTPS checks produced these real outcomes:
+
+- `POST /api/games` -> HTTP 201 with a new unpredictable game ID and no `word` field.
+- `GET /api/games/<game_id>` -> HTTP 200 with the same active masked state and no `word` field.
+- `POST /api/games/<game_id>/guess` with `e` -> HTTP 200, updated `_ e _ e _ _`, and still omitted `word`.
+- Invalid guess `ee` -> HTTP 400 with `guess must be exactly one A-Z letter`.
+- Unknown game ID -> HTTP 404 with `game not found`.
+- Sequential guesses completed that game as a real loss: `remaining_guesses` became 0, `status` became `lost`, and only then did the response include `word: desert`.
+
+The free instance may spin down after inactivity and take roughly 50 seconds or more to wake. Games are in memory and can reset after sleep, restart, or redeploy; this matches the documented one-worker architecture.

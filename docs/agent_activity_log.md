@@ -249,3 +249,27 @@ No GitHub remote, push, Render service, or public HTTPS URL exists yet.
 ### Honest status
 
 The report is a verified two-page draft, not the final submission version. It explicitly states that GitHub/Render URLs are missing and must be regenerated after publication. No recording exists. No HuskyCT submission occurred.
+
+## 2026-10-29 — GitHub publication and public Render deployment
+
+### Work completed
+
+- Created the public repository `https://github.com/armaan-are/cse4095-hangman-web-game`, added it as `origin`, and pushed `main`.
+- Verified remote `main` and local `HEAD` both resolved to `57ed38e1d0e0606442c5e8e04e60863a654eccb7` before deployment.
+- Created a Render Free web service scoped to only the Hangman repository; no paid plan or payment method was used.
+- Configured `pip install -r requirements.txt` and `gunicorn --bind 0.0.0.0:$PORT --workers 1 server:app`.
+- Verified the build log, one sync worker, health request, live status, deployed commit, and primary URL `https://cse4095-hangman-web-game.onrender.com`.
+- Ran a real public browser start/guess flow and independent HTTPS API checks for creation, retrieval, guessing, validation, missing IDs, secrecy, and terminal answer disclosure.
+
+### Verification performed
+
+- Render first deploy: successful and live in 49.8 seconds.
+- Public browser: Medium game started; wrong `A` guess changed attempts from 6 to 5, updated the drawing, and disabled the duplicate control.
+- Public API: HTTP 201 create, HTTP 200 GET, HTTP 200 valid guess, HTTP 400 invalid `ee`, and HTTP 404 unknown game.
+- Active responses omitted `word`; a completed loss revealed `word: desert` only after `remaining_guesses` reached 0.
+- A fresh temporary virtual environment installed the pinned requirements and passed all 58 tests; `node --check static/app.js` also passed.
+- Regenerated the final report PDF with the verified URLs, confirmed it remained two letter-sized pages, extracted both URLs from the PDF text, and visually inspected both rendered pages with no clipping or overlap.
+
+### Remaining student action
+
+The real 2–3 minute video and Chrome DevTools Network capture still require the student's recording. HuskyCT has not been submitted.
